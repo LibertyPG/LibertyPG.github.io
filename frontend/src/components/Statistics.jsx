@@ -1,11 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Users, Building, Bed } from 'lucide-react';
 
 const Statistics = () => {
-  const stats = [
-    { icon: Users, value: '50+', label: 'Students', color: 'blue' },
-    { icon: Building, value: '17', label: 'Rooms', color: 'green' },
-    { icon: Bed, value: '50+', label: 'Beds', color: 'yellow' }
+  const [stats, setStats] = useState({
+    totalStudents: 50,
+    totalRooms: 17,
+    totalBeds: 50
+  });
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+        const response = await fetch(`${BACKEND_URL}/api/stats`);
+        const data = await response.json();
+        
+        if (response.ok) {
+          setStats({
+            totalStudents: data.totalStudents,
+            totalRooms: data.totalRooms,
+            totalBeds: data.totalBeds
+          });
+        }
+      } catch (error) {
+        console.error('Error fetching statistics:', error);
+        // Keep default values on error
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchStats();
+  }, []);
+
+  const statsData = [
+    { icon: Users, value: `${stats.totalStudents}+`, label: 'Students', color: 'blue' },
+    { icon: Building, value: stats.totalRooms.toString(), label: 'Rooms', color: 'green' },
+    { icon: Bed, value: `${stats.totalBeds}+`, label: 'Beds', color: 'yellow' }
   ];
 
   return (
