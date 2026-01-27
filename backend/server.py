@@ -14,11 +14,6 @@ from database import db, close_db_connection
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
-# MongoDB connection
-mongo_url = os.environ['MONGO_URL']
-client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ.get('DB_NAME', 'liberty_pg')]
-
 # Create the main app without a prefix
 app = FastAPI(
     title="Liberty PG API",
