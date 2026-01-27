@@ -8,11 +8,6 @@ logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/api", tags=["enquiries"])
 
-# MongoDB connection
-mongo_url = os.environ['MONGO_URL']
-client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ.get('DB_NAME', 'liberty_pg')]
-
 @router.post("/enquiry", status_code=status.HTTP_201_CREATED)
 async def create_enquiry(enquiry_data: EnquiryCreate):
     """
