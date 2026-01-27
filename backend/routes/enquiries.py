@@ -2,8 +2,7 @@ from fastapi import APIRouter, HTTPException, status
 from typing import List
 import logging
 from models.enquiry import Enquiry, EnquiryCreate
-from motor.motor_asyncio import AsyncIOMotorClient
-import os
+from database import db
 
 logger = logging.getLogger(__name__)
 
