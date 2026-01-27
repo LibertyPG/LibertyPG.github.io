@@ -50,7 +50,7 @@ const Statistics = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {stats.map((stat, index) => {
+          {statsData.map((stat, index) => {
             const Icon = stat.icon;
             return (
               <div
