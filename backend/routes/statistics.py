@@ -1,8 +1,7 @@
 from fastapi import APIRouter, HTTPException, status
 import logging
 from models.statistics import Statistics
-from motor.motor_asyncio import AsyncIOMotorClient
-import os
+from database import db
 
 logger = logging.getLogger(__name__)
 
