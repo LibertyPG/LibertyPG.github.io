@@ -16,29 +16,53 @@ const EnquiryForm = ({ onClose }) => {
     message: ''
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Mock submission
-    toast({
-      title: 'Enquiry Submitted!',
-      description: 'Thank you for your interest. We\'ll contact you soon.',
-      duration: 5000
-    });
-    
-    // Reset form
-    setFormData({
-      name: '',
-      contact: '',
-      email: '',
-      roomType: '',
-      message: ''
-    });
-    
-    // Close form after delay
-    setTimeout(() => {
-      onClose();
-    }, 2000);
+    try {
+      const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+      const response = await fetch(`${BACKEND_URL}/api/enquiry`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast({
+          title: 'Enquiry Submitted!',
+          description: data.message || 'Thank you for your interest. We\'ll contact you soon.',
+          duration: 5000
+        });
+        
+        // Reset form
+        setFormData({
+          name: '',
+          contact: '',
+          email: '',
+          roomType: '',
+          message: ''
+        });
+        
+        // Close form after delay
+        setTimeout(() => {
+          onClose();
+        }, 2000);
+      } else {
+        throw new Error(data.detail || 'Failed to submit enquiry');
+      }
+    } catch (error) {
+      console.error('Error submitting enquiry:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to submit enquiry. Please try again or contact us directly.',
+        variant: 'destructive',
+        duration: 5000
+      });
+    }
   };
 
   return (
