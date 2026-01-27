@@ -40,10 +40,14 @@ class StatusCheck(BaseModel):
 class StatusCheckCreate(BaseModel):
     client_name: str
 
-# Add your routes to the router instead of directly to app
+# Root endpoint
 @api_router.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return {
+        "message": "Welcome to Liberty PG API",
+        "version": "1.0.0",
+        "status": "operational"
+    }
 
 @api_router.post("/status", response_model=StatusCheck)
 async def create_status_check(input: StatusCheckCreate):
