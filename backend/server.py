@@ -8,6 +8,7 @@ from pathlib import Path
 
 # Import route modules
 from routes import enquiries, statistics, reviews
+from database import db, close_db_connection
 
 
 ROOT_DIR = Path(__file__).parent
