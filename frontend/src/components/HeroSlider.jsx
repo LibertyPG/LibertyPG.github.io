@@ -7,17 +7,17 @@ const HeroSlider = ({ onEnquireClick }) => {
 
   const slides = [
     {
-      image: 'https://customer-assets.emergentagent.com/job_0d2be8c3-a8ba-405e-a0d6-6243d0523c20/artifacts/p07p5lj1_IMG_0719.heic',
+      image: 'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=1920&q=80',
       title: 'Fully Furnished PG',
       subtitle: 'for Boys in Ahmedabad'
     },
     {
-      image: 'https://customer-assets.emergentagent.com/job_0d2be8c3-a8ba-405e-a0d6-6243d0523c20/artifacts/wygejy4g_IMG_0789.heic',
+      image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=1920&q=80',
       title: 'Modern Living Spaces',
       subtitle: 'Designed for Comfort'
     },
     {
-      image: 'https://customer-assets.emergentagent.com/job_0d2be8c3-a8ba-405e-a0d6-6243d0523c20/artifacts/r2iymmpf_IMG_0791.heic',
+      image: 'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=1920&q=80',
       title: 'Premium Amenities',
       subtitle: 'Everything You Need'
     }
