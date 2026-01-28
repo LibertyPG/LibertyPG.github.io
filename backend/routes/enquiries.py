@@ -3,10 +3,54 @@ from typing import List
 import logging
 from models.enquiry import Enquiry, EnquiryCreate
 from database import db
+import requests
 
 logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/api", tags=["enquiries"])
+
+def send_whatsapp_notification(enquiry: Enquiry):
+    """
+    Send WhatsApp notification for new enquiry
+    """
+    try:
+        phone_number = "917862931746"  # Your WhatsApp number
+        
+        # Format message
+        message = f"""🏠 *New Enquiry - Liberty PG*
+
+👤 *Name:* {enquiry.name}
+📱 *Contact:* {enquiry.contact}
+📧 *Email:* {enquiry.email or 'Not provided'}
+🛏️ *Room Type:* {enquiry.roomType}
+💬 *Message:* {enquiry.message or 'No message'}
+
+📅 *Date:* {enquiry.createdAt.strftime('%d %B %Y, %I:%M %p')}
+🆔 *Enquiry ID:* {enquiry.id}
+
+Please contact the customer at the earliest!"""
+
+        logger.info(f"WhatsApp notification prepared for enquiry {enquiry.id}")
+        logger.info(f"Message would be sent to: {phone_number}")
+        logger.info(f"Message content: {message}")
+        
+        # Note: To enable WhatsApp notifications, you need to:
+        # 1. Set up WhatsApp Business API or use services like Twilio
+        # 2. Add API credentials to environment variables
+        # 3. Uncomment the API call below
+        
+        # Example with Twilio (when configured):
+        # from twilio.rest import Client
+        # client = Client(account_sid, auth_token)
+        # message = client.messages.create(
+        #     from_='whatsapp:+14155238886',
+        #     body=message,
+        #     to=f'whatsapp:+{phone_number}'
+        # )
+        
+    except Exception as e:
+        logger.error(f"Error sending WhatsApp notification: {str(e)}")
+        # Don't fail the enquiry submission if WhatsApp fails
 
 @router.post("/enquiry", status_code=status.HTTP_201_CREATED)
 async def create_enquiry(enquiry_data: EnquiryCreate):
@@ -21,6 +65,9 @@ async def create_enquiry(enquiry_data: EnquiryCreate):
         result = await db.enquiries.insert_one(enquiry.dict())
         
         logger.info(f"New enquiry created: {enquiry.id} from {enquiry.name}")
+        
+        # Send WhatsApp notification
+        send_whatsapp_notification(enquiry)
         
         return {
             "success": True,
