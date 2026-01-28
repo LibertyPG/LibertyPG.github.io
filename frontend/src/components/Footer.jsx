@@ -26,8 +26,9 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <MapPin className="flex-shrink-0 text-blue-400" size={20} />
                 <p className="text-gray-400">
-                  Mithakhali Six Roads, Navrangpura,<br />
-                  Ahmedabad - 380006
+                  4th Floor, Venu Gopal Complex,<br />
+                  B/H Hotel Nalanda, Mithakhali Six Roads,<br />
+                  Navrangpura, Ahmedabad – 380009
                 </p>
               </div>
               <div className="flex items-center space-x-3">
@@ -77,7 +78,7 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-3">Follow Us</h4>
             <div className="flex space-x-4">
               <a
-                href="https://facebook.com/libertypg"
+                href="https://www.facebook.com/profile.php?id=61584586592644"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 bg-gray-800 hover:bg-blue-600 rounded-full transition-colors"
@@ -85,20 +86,12 @@ const Footer = () => {
                 <Facebook size={20} />
               </a>
               <a
-                href="https://instagram.com/libertypg"
+                href="https://www.instagram.com/pg.liberty"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 bg-gray-800 hover:bg-pink-600 rounded-full transition-colors"
               >
                 <Instagram size={20} />
-              </a>
-              <a
-                href="https://twitter.com/libertypg"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 bg-gray-800 hover:bg-blue-400 rounded-full transition-colors"
-              >
-                <Twitter size={20} />
               </a>
             </div>
           </div>

@@ -8,18 +8,18 @@ const HeroSlider = ({ onEnquireClick }) => {
   const slides = [
     {
       image: 'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=1920&q=80',
-      title: 'Fully Furnished PG',
-      subtitle: 'for Boys in Ahmedabad'
+      title: 'LIVE FREE, FEEL FREE',
+      subtitle: 'Premium PG for Boys in Ahmedabad'
     },
     {
       image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=1920&q=80',
       title: 'Modern Living Spaces',
-      subtitle: 'Designed for Comfort'
+      subtitle: 'Designed for Your Comfort'
     },
     {
       image: 'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=1920&q=80',
       title: 'Premium Amenities',
-      subtitle: 'Everything You Need'
+      subtitle: 'Everything You Need Under One Roof'
     }
   ];
 

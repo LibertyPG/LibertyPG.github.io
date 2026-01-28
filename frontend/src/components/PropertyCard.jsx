@@ -68,7 +68,7 @@ const PropertyCard = ({ onEnquireClick }) => {
                     rel="noopener noreferrer"
                     className="text-blue-600 hover:underline"
                   >
-                    Mithakhali Six Roads, Navrangpura, Ahmedabad - 380006
+                    4th Floor, Venu Gopal Complex, B/H Hotel Nalanda, Mithakhali Six Roads, Navrangpura, Ahmedabad – 380009
                   </a>
                 </div>
               </div>

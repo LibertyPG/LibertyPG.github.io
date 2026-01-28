@@ -8,13 +8,13 @@ const FeaturesCarousel = () => {
   const features = [
     {
       id: 1,
-      title: 'Hygienic Food',
-      description: 'Fresh, nutritious, and delicious home-style meals prepared with utmost hygiene standards.',
+      title: 'Hygienic Vegetarian Food',
+      description: 'Fresh, nutritious, and delicious vegetarian home-style meals prepared with utmost hygiene standards.',
       icon: Utensils,
       images: [
-        'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&q=80',
-        'https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=800&q=80',
-        'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80'
+        'https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=800&q=80',
+        'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800&q=80',
+        'https://images.unsplash.com/photo-1626074353765-517a1cf4f498?w=800&q=80'
       ]
     },
     {
@@ -40,7 +40,7 @@ const FeaturesCarousel = () => {
     },
     {
       id: 4,
-      title: 'Biometric Security',
+      title: '24/7 Security',
       description: 'The highest standard of safety and security measures for a worry-free living experience.',
       icon: Shield,
       images: [
@@ -54,8 +54,8 @@ const FeaturesCarousel = () => {
       description: 'Immersive and fun-filled common areas for recreation, relaxation, and social interaction.',
       icon: Users,
       images: [
-        'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=800&q=80',
-        'https://images.unsplash.com/photo-1574643156929-51fa098b0394?w=800&q=80'
+        'https://images.unsplash.com/photo-1541692641319-981cc79ee10a?w=800&q=80',
+        'https://images.unsplash.com/photo-1522844990619-4951c40f7eda?w=800&q=80'
       ]
     },
     {
@@ -82,7 +82,7 @@ const FeaturesCarousel = () => {
       description: 'Modern lift facility for convenient access to all floors.',
       icon: Building2,
       images: [
-        'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80'
+        'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&q=80'
       ]
     },
     {
@@ -91,7 +91,7 @@ const FeaturesCarousel = () => {
       description: 'Spacious terrace area perfect for relaxation and social gatherings.',
       icon: Users,
       images: [
-        'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80'
+        'https://images.unsplash.com/photo-1600011689032-8b628b8a8747?w=800&q=80'
       ]
     }
   ];

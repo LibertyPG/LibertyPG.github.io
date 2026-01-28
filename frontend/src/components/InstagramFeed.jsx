@@ -56,13 +56,13 @@ const InstagramFeed = () => {
 
         <div className="text-center mt-8">
           <a
-            href="https://www.instagram.com/libertypg"
+            href="https://www.instagram.com/pg.liberty"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center space-x-2 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white px-8 py-3 rounded-md transition-all duration-300 hover:shadow-lg font-semibold"
           >
             <Instagram size={20} />
-            <span>Follow @libertypg</span>
+            <span>Follow @pg.liberty</span>
           </a>
         </div>
       </div>
