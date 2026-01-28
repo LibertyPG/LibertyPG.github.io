@@ -13,8 +13,8 @@ const FeaturesCarousel = () => {
       icon: Utensils,
       images: [
         'https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=800&q=80',
-        'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800&q=80',
-        'https://images.unsplash.com/photo-1626074353765-517a1cf4f498?w=800&q=80'
+        'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=800&q=80',
+        'https://images.unsplash.com/photo-1645177628172-a94c1f96e6db?w=800&q=80'
       ]
     },
     {

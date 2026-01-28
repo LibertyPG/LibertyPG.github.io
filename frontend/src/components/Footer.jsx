@@ -11,8 +11,9 @@ const Footer = () => {
             <img
               src="https://customer-assets.emergentagent.com/job_liberty-stays/artifacts/tcxqm9as_LOGO.png"
               alt="Liberty PG"
-              className="h-16 mb-4"
+              className="h-16 mb-2"
             />
+            <p className="text-sm font-bold text-gray-300 tracking-wider mb-4">LIVE FREE, FEEL FREE</p>
             <p className="text-gray-400 leading-relaxed">
               Liberty PG offers premium, fully-furnished accommodation for boys in Ahmedabad. 
               Experience comfortable living with modern amenities and a supportive community.

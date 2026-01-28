@@ -21,12 +21,15 @@ const Navbar = ({ onEnquireClick }) => {
       }`}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-        <div className="flex items-center">
+        <div className="flex items-center space-x-3">
           <img
             src="https://customer-assets.emergentagent.com/job_liberty-stays/artifacts/tcxqm9as_LOGO.png"
             alt="Liberty PG"
             className="h-12 w-auto"
           />
+          <div className="hidden md:block">
+            <p className="text-xs font-bold text-gray-700 tracking-wider">LIVE FREE, FEEL FREE</p>
+          </div>
         </div>
 
         {/* Desktop Menu */}
