@@ -3,7 +3,7 @@ from typing import List
 import logging
 from models.enquiry import Enquiry, EnquiryCreate
 from database import db
-import requests
+import urllib.parse
 
 logger = logging.getLogger(__name__)
 
@@ -11,46 +11,70 @@ router = APIRouter(prefix="/api", tags=["enquiries"])
 
 def send_whatsapp_notification(enquiry: Enquiry):
     """
-    Send WhatsApp notification for new enquiry
+    Send WhatsApp notification for new enquiry using WhatsApp Web URL
+    This creates a clickable link that will be logged. 
+    In production, you can use Twilio or WhatsApp Business API.
     """
     try:
         phone_number = "917862931746"  # Your WhatsApp number
         
-        # Format message
-        message = f"""🏠 *New Enquiry - Liberty PG*
+        # Format message with proper encoding for URL
+        message_text = f"""*New Enquiry - Liberty PG*
 
-👤 *Name:* {enquiry.name}
-📱 *Contact:* {enquiry.contact}
-📧 *Email:* {enquiry.email or 'Not provided'}
-🛏️ *Room Type:* {enquiry.roomType}
-💬 *Message:* {enquiry.message or 'No message'}
+Name: {enquiry.name}
+Contact: {enquiry.contact}
+Email: {enquiry.email or 'Not provided'}
+Room Type: {enquiry.roomType}
+Message: {enquiry.message or 'No message'}
 
-📅 *Date:* {enquiry.createdAt.strftime('%d %B %Y, %I:%M %p')}
-🆔 *Enquiry ID:* {enquiry.id}
+Date: {enquiry.createdAt.strftime('%d %B %Y, %I:%M %p')}
+Enquiry ID: {enquiry.id}
 
 Please contact the customer at the earliest!"""
 
-        logger.info(f"WhatsApp notification prepared for enquiry {enquiry.id}")
-        logger.info(f"Message would be sent to: {phone_number}")
-        logger.info(f"Message content: {message}")
+        # Encode message for URL
+        encoded_message = urllib.parse.quote(message_text)
         
-        # Note: To enable WhatsApp notifications, you need to:
-        # 1. Set up WhatsApp Business API or use services like Twilio
-        # 2. Add API credentials to environment variables
-        # 3. Uncomment the API call below
+        # Create WhatsApp Web URL
+        whatsapp_url = f"https://wa.me/{phone_number}?text={encoded_message}"
         
-        # Example with Twilio (when configured):
+        logger.info(f"=" * 80)
+        logger.info(f"NEW ENQUIRY RECEIVED - WHATSAPP NOTIFICATION")
+        logger.info(f"=" * 80)
+        logger.info(f"Name: {enquiry.name}")
+        logger.info(f"Contact: {enquiry.contact}")
+        logger.info(f"Email: {enquiry.email or 'Not provided'}")
+        logger.info(f"Room Type: {enquiry.roomType}")
+        logger.info(f"Message: {enquiry.message or 'No message'}")
+        logger.info(f"=" * 80)
+        logger.info(f"WhatsApp Notification URL:")
+        logger.info(f"{whatsapp_url}")
+        logger.info(f"=" * 80)
+        logger.info(f"To enable automatic WhatsApp sending:")
+        logger.info(f"1. Sign up for Twilio (https://www.twilio.com/whatsapp)")
+        logger.info(f"2. Get WhatsApp Business API credentials")
+        logger.info(f"3. Add TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN to .env")
+        logger.info(f"4. Uncomment the Twilio code in this function")
+        logger.info(f"=" * 80)
+        
+        # For now, you can manually click this URL in the logs to send the message
+        # Or implement automatic sending using Twilio:
+        
         # from twilio.rest import Client
+        # import os
+        # account_sid = os.environ.get('TWILIO_ACCOUNT_SID')
+        # auth_token = os.environ.get('TWILIO_AUTH_TOKEN')
         # client = Client(account_sid, auth_token)
         # message = client.messages.create(
         #     from_='whatsapp:+14155238886',
-        #     body=message,
+        #     body=message_text,
         #     to=f'whatsapp:+{phone_number}'
         # )
+        # logger.info(f"WhatsApp message sent: {message.sid}")
         
     except Exception as e:
-        logger.error(f"Error sending WhatsApp notification: {str(e)}")
-        # Don't fail the enquiry submission if WhatsApp fails
+        logger.error(f"Error preparing WhatsApp notification: {str(e)}")
+        # Don't fail the enquiry submission if WhatsApp preparation fails
 
 @router.post("/enquiry", status_code=status.HTTP_201_CREATED)
 async def create_enquiry(enquiry_data: EnquiryCreate):
