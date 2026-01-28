@@ -38,6 +38,9 @@ const EnquiryForm = ({ onClose }) => {
           duration: 5000
         });
         
+        // Send WhatsApp notification
+        sendWhatsAppNotification();
+        
         // Reset form
         setFormData({
           name: '',
@@ -63,6 +66,31 @@ const EnquiryForm = ({ onClose }) => {
         duration: 5000
       });
     }
+  };
+
+  const sendWhatsAppNotification = () => {
+    // Format message for WhatsApp
+    const message = `*New Enquiry - Liberty PG*
+
+Name: ${formData.name}
+Contact: ${formData.contact}
+Email: ${formData.email || 'Not provided'}
+Room Type: ${formData.roomType}
+Message: ${formData.message || 'No message'}
+
+Please contact the customer at the earliest!`;
+
+    // Encode message for URL
+    const encodedMessage = encodeURIComponent(message);
+    
+    // Your WhatsApp number
+    const whatsappNumber = '917862931746';
+    
+    // Create WhatsApp URL
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    
+    // Open WhatsApp in new tab (this will send the notification)
+    window.open(whatsappUrl, '_blank');
   };
 
   return (
